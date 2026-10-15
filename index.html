@@ -17,6 +17,104 @@ header{position:sticky;top:0;z-index:20;background:rgba(5,17,32,.94);backdrop-fi
 .process-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}.step{padding:22px;border-top:2px solid var(--blue);background:var(--panel);border-radius:0 0 8px 8px}.step strong{font-size:1.7rem;color:var(--blue)}.step h3{margin:8px 0}.step p{font-size:.86rem;color:var(--muted)}
 .contact{background:#091a2e}.contact-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:42px}.contact-intro p{color:var(--muted);margin:12px 0 24px}.contact-row{display:flex;gap:13px;align-items:center;margin:22px 0}.contact-icon{width:42px;height:42px;display:grid;place-items:center;background:rgba(24,186,255,.12);border-radius:8px}.contact-row small{display:block;color:var(--muted)}.contact-row strong{overflow-wrap:anywhere}.form{padding:27px;background:var(--panel);border:1px solid var(--line);border-radius:12px}.formrow{display:grid;grid-template-columns:1fr 1fr;gap:14px}.field{margin-bottom:16px}.field label{display:block;font-size:.86rem;margin-bottom:6px}.field input,.field textarea,.field select{width:100%;padding:12px;background:#071629;color:white;border:1px solid var(--line);border-radius:6px;outline:none}.field input:focus,.field textarea:focus,.field select:focus{border-color:var(--blue)}.field textarea{min-height:120px;resize:vertical}.note{font-size:.78rem;color:var(--muted);margin-top:10px}.cta{padding:60px 0;text-align:center;background:linear-gradient(110deg,#087eb8,#1247a0)}.cta h2{font-size:clamp(1.8rem,4vw,2.7rem);line-height:1.2}.cta p{color:#e2f5ff;max-width:660px;margin:14px auto 22px}.cta .btn{background:#fff;color:#071629}footer{background:#050f1d;border-top:1px solid var(--line);padding:28px 0}.footer{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}.footer p,.footer a{color:var(--muted);font-size:.83rem}.footer-links{display:flex;gap:17px;flex-wrap:wrap}.reveal{opacity:0;transform:translateY(15px);transition:opacity .6s,transform .6s}.reveal.visible{opacity:1;transform:none}
 @media(max-width:900px){.hero-grid,.about-grid,.contact-grid{grid-template-columns:1fr}.hero-art{min-height:300px}.grid3{grid-template-columns:repeat(2,1fr)}.process-grid{grid-template-columns:repeat(2,1fr)}}@media(max-width:650px){.section{padding:66px 0}.menu{display:block}.links{display:none;position:absolute;top:76px;left:0;right:0;padding:12px 5% 20px;background:#071629;border-bottom:1px solid var(--line);flex-direction:column;align-items:stretch;gap:0}.links.open{display:flex}.links a{display:block;padding:11px 0}.hero{padding:68px 0}.hero h1{letter-spacing:-.035em}.stats{gap:20px}.grid3,.projects-grid,.process-grid,.checks,.formrow{grid-template-columns:1fr}.project img{height:220px}.form{padding:20px}.footer{align-items:flex-start;flex-direction:column}}@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.reveal{opacity:1;transform:none;transition:none}*{transition:none!important}}
+
+/* Cinematic rotating engineering background */
+.hero{position:relative;isolation:isolate;background:#071629}
+.hero::before{content:"";position:absolute;inset:0;z-index:-2;background-image:linear-gradient(90deg,rgba(4,15,30,.96) 0%,rgba(4,15,30,.82) 48%,rgba(4,15,30,.52) 100%),url('assets/page-3.jpg');background-size:cover;background-position:center;animation:heroBackground 28s infinite;transform:scale(1.02)}
+.hero::after{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(ellipse at 80% 25%,rgba(24,186,255,.20),transparent 42%);pointer-events:none}
+@keyframes heroBackground{0%,22%{background-image:linear-gradient(90deg,rgba(4,15,30,.96) 0%,rgba(4,15,30,.82) 48%,rgba(4,15,30,.52) 100%),url('assets/page-3.jpg')}25%,47%{background-image:linear-gradient(90deg,rgba(4,15,30,.96) 0%,rgba(4,15,30,.82) 48%,rgba(4,15,30,.52) 100%),url('assets/project-1.jpg')}50%,72%{background-image:linear-gradient(90deg,rgba(4,15,30,.96) 0%,rgba(4,15,30,.82) 48%,rgba(4,15,30,.52) 100%),url('assets/project-2.jpg')}75%,97%{background-image:linear-gradient(90deg,rgba(4,15,30,.96) 0%,rgba(4,15,30,.82) 48%,rgba(4,15,30,.52) 100%),url('assets/project-4.jpg')}100%{background-image:linear-gradient(90deg,rgba(4,15,30,.96) 0%,rgba(4,15,30,.82) 48%,rgba(4,15,30,.52) 100%),url('assets/page-3.jpg')}}
+.hero-art{background:linear-gradient(rgba(24,186,255,.055) 1px,transparent 1px),linear-gradient(90deg,rgba(24,186,255,.055) 1px,transparent 1px),rgba(5,20,38,.52);background-size:24px 24px,24px 24px,auto;backdrop-filter:blur(2px)}
+.project img{transition:transform .7s ease,filter .7s ease}.project:hover img{transform:scale(1.045);filter:saturate(1.15)}
+@media(prefers-reduced-motion:reduce){.hero::before{animation:none}}
+
+.portfolio-strip{display:flex;gap:14px;overflow:hidden;margin:-10px 0 28px;padding:4px 0 12px;mask-image:linear-gradient(90deg,transparent,#000 4%,#000 96%,transparent)}.portfolio-strip img{flex:0 0 250px;width:250px;height:145px;object-fit:cover;border-radius:10px;border:1px solid rgba(24,186,255,.35);animation:galleryDrift 24s linear infinite}.portfolio-strip:hover img{animation-play-state:paused}@keyframes galleryDrift{0%{transform:translateX(0)}100%{transform:translateX(-30px)}}@media(max-width:650px){.portfolio-strip img{flex-basis:205px;width:205px;height:125px}}
+
+/* IMAGE-FIT FIXES: keep complete project drawings visible */
+.project img {
+    width: 100%;
+    height: clamp(230px, 27vw, 360px);
+    object-fit: contain !important;
+    object-position: center center !important;
+    padding: 12px;
+    background: #f7f9fc;
+}
+.portfolio-strip img {
+    object-fit: contain !important;
+    object-position: center center !important;
+    background: #f7f9fc;
+    padding: 5px;
+    height: 150px;
+}
+.brand img {
+    object-fit: contain !important;
+    padding: 2px;
+}
+.about-logo img {
+    object-fit: contain !important;
+    max-height: 190px;
+}
+.card .icon {
+    width: 58px;
+    height: 58px;
+    overflow: hidden;
+    object-fit: contain;
+}
+/* Animated project-photo background with a dark overlay for legible text */
+.hero {
+    position: relative;
+    isolation: isolate;
+    background: #071629;
+}
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    background-image:
+      linear-gradient(90deg, rgba(4,15,30,.94) 0%, rgba(4,15,30,.80) 50%, rgba(4,15,30,.58) 100%),
+      url("assets/page-3.jpg");
+    background-size: cover;
+    background-position: center 42%;
+    animation: lutsEngineeringBackground 32s ease-in-out infinite;
+    transform: scale(1.02);
+}
+.hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background: radial-gradient(ellipse at 78% 30%, rgba(24,186,255,.18), transparent 48%);
+}
+@keyframes lutsEngineeringBackground {
+    0%, 22% {
+      background-image: linear-gradient(90deg,rgba(4,15,30,.94),rgba(4,15,30,.80) 50%,rgba(4,15,30,.58)), url("assets/page-3.jpg");
+    }
+    25%, 47% {
+      background-image: linear-gradient(90deg,rgba(4,15,30,.94),rgba(4,15,30,.80) 50%,rgba(4,15,30,.58)), url("assets/project-1.jpg");
+    }
+    50%, 72% {
+      background-image: linear-gradient(90deg,rgba(4,15,30,.94),rgba(4,15,30,.80) 50%,rgba(4,15,30,.58)), url("assets/project-2.jpg");
+    }
+    75%, 97% {
+      background-image: linear-gradient(90deg,rgba(4,15,30,.94),rgba(4,15,30,.80) 50%,rgba(4,15,30,.58)), url("assets/project-4.jpg");
+    }
+    100% {
+      background-image: linear-gradient(90deg,rgba(4,15,30,.94),rgba(4,15,30,.80) 50%,rgba(4,15,30,.58)), url("assets/page-3.jpg");
+    }
+}
+@media (max-width: 650px) {
+    .project img { height: 245px; padding: 8px; }
+    .portfolio-strip img { height: 125px; }
+    .hero::before {
+      background-position: center;
+      background-image: linear-gradient(rgba(4,15,30,.88),rgba(4,15,30,.82)), url("assets/project-1.jpg");
+    }
+}
+@media (prefers-reduced-motion: reduce) {
+    .hero::before { animation: none; }
+}
+
 </style>
 </head>
 <body>
@@ -34,14 +132,14 @@ header{position:sticky;top:0;z-index:20;background:rgba(5,17,32,.94);backdrop-fi
 <div class="stats"><div class="stat"><strong>3D CAD</strong><span>Mechanical design</span></div><div class="stat"><strong>Simulation</strong><span>Engineering analysis</span></div><div class="stat"><strong>Product</strong><span>Development</span></div></div>
 </div><div class="hero-art"><div class="wire"></div><div class="art-label"><div class="gear">⚙</div><strong>ENGINEERING INNOVATION</strong><small>Design. Simulate. Improve.</small></div></div></div></section>
 <section class="section services" id="services"><div class="container"><div class="eyebrow">What We Do</div><h2 class="title">Engineering <span class="blue">Services</span></h2><p class="lead">Engineering design services that help turn concepts into detailed models, drawings and simulations.</p><div class="grid3">
-<article class="card reveal"><div class="icon"><img src="assets/3dmodeling icon.jpg"></div><h3>3D CAD Modelling</h3><p>Three-dimensional part modelling, mechanical components, assemblies and product concepts using SolidWorks.</p></article>
-<article class="card reveal"><div class="icon"><img src="assets/Drawing icon.jpg"></div><h3>Engineering Drawings</h3><p>Technical drawings, assembly views, exploded views, dimensions and parts documentation.</p></article>
-<article class="card reveal"><div class="icon"><img src="assets/Flowsim.jpg"></div><h3>Flow Simulation</h3><p>Computational investigation of fluid flow and thermal behaviour to evaluate engineering designs.</p></article>
-<article class="card reveal"><div class="icon"><img src="assets/particlesim.jpg"></div><h3>Particle Simulation</h3><p>Particle behaviour analysis for granular materials and systems such as seed grading using Ansys Rocky.</p></article>
-<article class="card reveal"><div class="icon"><img src="assets/mechsysdesign.jpg"></div><h3>Mechanical System Design</h3><p>Design and modelling of mechanical equipment, assemblies, mechanisms and industrial systems.</p></article>
-<article class="card reveal"><div class="icon"><img src="assets/proddevt.jpg"></div><h3>Product Development</h3><p>Engineering concepts developed into 3D models, design iterations and technical documentation.</p></article>
+<article class="card reveal"><div class="icon" aria-hidden="true">📐</div><h3>3D CAD Modelling</h3><p>Three-dimensional part modelling, mechanical components, assemblies and product concepts using SolidWorks.</p></article>
+<article class="card reveal"><div class="icon" aria-hidden="true">📋</div><h3>Engineering Drawings</h3><p>Technical drawings, assembly views, exploded views, dimensions and parts documentation.</p></article>
+<article class="card reveal"><div class="icon" aria-hidden="true">🌊</div><h3>Flow Simulation</h3><p>Computational investigation of fluid flow and thermal behaviour to evaluate engineering designs.</p></article>
+<article class="card reveal"><div class="icon" aria-hidden="true">🔬</div><h3>Particle Simulation</h3><p>Particle behaviour analysis for granular materials and systems such as seed grading using Ansys Rocky.</p></article>
+<article class="card reveal"><div class="icon" aria-hidden="true">⚙️</div><h3>Mechanical System Design</h3><p>Design and modelling of mechanical equipment, assemblies, mechanisms and industrial systems.</p></article>
+<article class="card reveal"><div class="icon" aria-hidden="true">💡</div><h3>Product Development</h3><p>Engineering concepts developed into 3D models, design iterations and technical documentation.</p></article>
 </div></div></section>
-<section class="section" id="projects"><div class="container"><div class="eyebrow">Our Portfolio</div><h2 class="title">Featured <span class="blue">Projects</span></h2><p class="lead">Selected mechanical design and simulation projects from the LUTS CAD WORKS portfolio.</p><div class="projects-grid">
+<section class="section" id="projects"><div class="container"><div class="eyebrow">Our Portfolio</div><h2 class="title">Featured <span class="blue">Projects</span></h2><p class="lead">Selected mechanical design and simulation projects from the LUTS CAD WORKS portfolio. Explore our work in CAD design and engineering simulation.</p><div class="portfolio-strip" aria-label="Engineering project image slideshow"><img src="assets/project-1.jpg" alt="Solar dryer CAD project"><img src="assets/project-2.jpg" alt="Aromatics oil extractor CAD project"><img src="assets/project-3.jpg" alt="Cement bag placement robot CAD project"><img src="assets/project-4.jpg" alt="Seed grading particle simulation"></div><div class="projects-grid">
 <article class="project reveal"><img src="assets/project-1.jpg" alt="Solar dryer exploded view, assembly drawings and flow simulation from the project portfolio" loading="lazy"><div class="project-info"><span class="project-no">PROJECT 01</span><h3>Solar Dryer Design and Simulation</h3><p>Solar dryer design featuring an exploded view with parts list, assembly drawings and flow simulation.</p><div class="tags"><span class="tag">SolidWorks</span><span class="tag">3D CAD</span><span class="tag">Flow Simulation</span></div></div></article>
 <article class="project reveal"><img src="assets/project-2.jpg" alt="Aromatics oil extractor CAD design and simulation project" loading="lazy"><div class="project-info"><span class="project-no">PROJECT 02</span><h3>Aromatics Oil Extractor</h3><p>Mechanical design of an aromatics oil extractor, including exploded views, assembly drawings and flow simulation.</p><div class="tags"><span class="tag">SolidWorks</span><span class="tag">Assembly Design</span><span class="tag">Simulation</span></div></div></article>
 <article class="project reveal"><img src="assets/project-3.jpg" alt="Cement valve bag placement robot assembly views and workstation design" loading="lazy"><div class="project-info"><span class="project-no">PROJECT 03</span><h3>Cement Valve Bag Placement Robot</h3><p>Robot design work featuring assembly views and a workstation arrangement for cement valve bag placement.</p><div class="tags"><span class="tag">SolidWorks</span><span class="tag">Robotics</span><span class="tag">Mechanical Design</span></div></div></article>
